@@ -1,0 +1,15 @@
+[
+  { "timestamp": { "$date": "2025-01-05T08:00:00Z" }, "temperature": 21.5, "humidity": 45.2, "co2": 380 },
+  { "timestamp": { "$date": "2025-02-10T09:00:00Z" }, "temperature": 19.8, "humidity": 50.1, "co2": 400 },
+  { "timestamp": { "$date": "2025-03-15T10:00:00Z" }, "temperature": 23.2, "humidity": 47.0, "co2": 390 },
+  { "timestamp": { "$date": "2025-04-20T11:00:00Z" }, "temperature": 25.0, "humidity": 42.5, "co2": 370 },
+  { "timestamp": { "$date": "2025-05-25T12:00:00Z" }, "temperature": 27.3, "humidity": 40.0, "co2": 360 },
+  { "timestamp": { "$date": "2025-06-30T13:00:00Z" }, "temperature": 30.1, "humidity": 38.5, "co2": 355 },
+  { "timestamp": { "$date": "2025-07-10T14:00:00Z" }, "temperature": 32.5, "humidity": 37.0, "co2": 350 },
+  { "timestamp": { "$date": "2025-08-18T15:00:00Z" }, "temperature": 31.8, "humidity": 39.2, "co2": 360 },
+  { "timestamp": { "$date": "2025-09-22T16:00:00Z" }, "temperature": 26.4, "humidity": 43.5, "co2": 375 },
+  { "timestamp": { "$date": "2025-10-28T17:00:00Z" }, "temperature": 20.9, "humidity": 48.0, "co2": 390 },
+  { "timestamp": { "$date": "2025-11-12T18:00:00Z" }, "temperature": 15.2, "humidity": 55.0, "co2": 410 },
+  { "timestamp": { "$date": "2025-12-05T19:00:00Z" }, "temperature": 10.5, "humidity": 60.2, "co2": 420 }
+]
+

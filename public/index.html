@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Analytical Platform</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Data Visualization</h1>
+
+  <label for="field">Select Field:</label>
+  <select id="field">
+    <option value="temperature">temperature</option>
+    <option value="humidity">humidity</option>
+    <option value="co2">CO2 Level</option>
+  </select>
+
+  <label for="start">Start Date:</label>
+  <input type="date" id="start">
+
+  <label for="end">End Date:</label>
+  <input type="date" id="end">
+
+  <button onclick="fetchData()">Visualize</button>
+
+  <canvas id="chart"></canvas>
+  <div id="metrics"></div>
+
+  <script>
+    async function fetchData() {
+      const field = document.getElementById('field').value;
+      const start = document.getElementById('start').value;
+      const end = document.getElementById('end').value;
+
+      const res = await fetch(`/api/measurements?field=${field}&start_date=${start}&end_date=${end}`);
+      const data = await res.json();
+
+      if (data.error) {
+        alert(data.error);
+        return;
+      }
+
+      const labels = data.map(d => new Date(d.timestamp).toLocaleString());
+      const values = data.map(d => d[field]);
+
+      const ctx = document.getElementById('chart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            label: field,
+            data: values,
+            borderColor: 'blue',
+            fill: false
+          }]
+        }
+      });
+
+      const metricsRes = await fetch(`/api/measurements/metrics?field=${field}`);
+      const metrics = await metricsRes.json();
+
+      document.getElementById('metrics').innerHTML =
+        `<p>Average: ${metrics.avg}</p>
+         <p>Min: ${metrics.min}</p>
+         <p>Max: ${metrics.max}</p>
+         <p>StdDev: ${metrics.stdDev}</p>`;
+    }
+  </script>
+</body>
+</html>

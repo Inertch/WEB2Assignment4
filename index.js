@@ -19,7 +19,7 @@ app.get('/api/measurements', async (req, res) => {
   try {
     const { field, start_date, end_date } = req.query;
 
-    if (!field || !['field1','field2','field3'].includes(field)) {
+    if (!field || !['temperature','humidity','co2'].includes(field)) {
       return res.status(400).json({ error: 'Invalid field name' });
     }
 
@@ -49,7 +49,7 @@ app.get('/api/measurements/metrics', async (req, res) => {
   try {
     const { field } = req.query;
 
-    if (!field || !['field1','field2','field3'].includes(field)) {
+    if (!field || !['temperature','humidity','co2'].includes(field)) {
       return res.status(400).json({ error: 'Invalid field name' });
     }
 
